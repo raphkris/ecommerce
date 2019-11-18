@@ -126,42 +126,90 @@ include("functions/functions.php");
 		<div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
 	</div>
 
-	<footer class="container" id="foot-contain">
-		<div class="row justify content-center">
-			<div class="col-2 col-md">
+	<footer class="pt-md-5 container" id="foot-contain">
+		<div class="pt-md-5 pl-md-5 row justify-content-around">
+			<div class="pl-md-4 col-2 col-md">
 				<h7>first header</h7>
 				<ul class="list-unstyled text-small">
 					<li>
 						<a class="text-muted" href="#">first list item</a>
 					</li>
-				</ul>
-			</div>
-			<div class="col-2 col-md">
-				<h7>second header</h7>
-				<ul class="list-unstyled text-small">
 					<li>
 						<a class="text-muted" href="#">second list item</a>
 					</li>
-				</ul>
-			</div>
-			<div class="col-2 col-md">
-				<h7>third header</h7>
-				<ul class="list-unstyled text-small">
 					<li>
 						<a class="text-muted" href="#">third list item</a>
 					</li>
+					<li>
+						<a class="text-muted" href="#">fourth list item</a>
+					</li>
+					<li>
+						<a class="text-muted" href="#">fifth list item</a>
+					</li>
 				</ul>
 			</div>
-			<div class="col-2 col-md">
+			<div class="pl-md-4 col-2 col-md">
+				<h7>second header</h7>
+				<ul class="list-unstyled text-small">
+					<li>
+						<a class="text-muted" href="#">first list item</a>
+					</li>
+					<li>
+						<a class="text-muted" href="#">second list item</a>
+					</li>
+					<li>
+						<a class="text-muted" href="#">third list item</a>
+					</li>
+					<li>
+						<a class="text-muted" href="#">fourth list item</a>
+					</li>
+					<li>
+						<a class="text-muted" href="#">fifth list item</a>
+					</li>
+				</ul>
+			</div>
+			<div class="pl-md-4 col-2 col-md">
+				<h7>third header</h7>
+				<ul class="list-unstyled text-small">
+					<li>
+						<a class="text-muted" href="#">first list item</a>
+					</li>
+					<li>
+						<a class="text-muted" href="#">second list item</a>
+					</li>
+					<li>
+						<a class="text-muted" href="#">third list item</a>
+					</li>
+					<li>
+						<a class="text-muted" href="#">fourth list item</a>
+					</li>
+					<li>
+						<a class="text-muted" href="#">fifth list item</a>
+					</li>
+				</ul>
+			</div>
+			<div class="pl-md-4 col-2 col-md">
 				<h7>fourth header</h7>
 				<ul class="list-unstyled text-small">
 					<li>
+						<a class="text-muted" href="#">first list item</a>
+					</li>
+					<li>
+						<a class="text-muted" href="#">second list item</a>
+					</li>
+					<li>
+						<a class="text-muted" href="#">third list item</a>
+					</li>
+					<li>
 						<a class="text-muted" href="#">fourth list item</a>
+					</li>
+					<li>
+						<a class="text-muted" href="#">fifth list item</a>
 					</li>
 				</ul>
 			</div>
 		</div>
-		<div class="row justify content-center">
+		<div class="pt-md-5 row text-center">
 			<div class="col-12 col-md" id="foot-info">
 				<p class="text-muted">foot info placeholder text</p>
 			</div>
