@@ -127,12 +127,43 @@ include("functions/functions.php");
 	</div>
 
 	<footer class="container" id="foot-contain">
-		<div class="row">
-			<div class="col-6 col-md justify-content-center" id="foot-content">
+		<div class="row justify content-center">
+			<div class="col-2 col-md">
+				<h7>first header</h7>
+				<ul class="list-unstyled text-small">
+					<li>
+						<a class="text-muted" href="#">first list item</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-2 col-md">
+				<h7>second header</h7>
+				<ul class="list-unstyled text-small">
+					<li>
+						<a class="text-muted" href="#">second list item</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-2 col-md">
+				<h7>third header</h7>
+				<ul class="list-unstyled text-small">
+					<li>
+						<a class="text-muted" href="#">third list item</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-2 col-md">
+				<h7>fourth header</h7>
+				<ul class="list-unstyled text-small">
+					<li>
+						<a class="text-muted" href="#">fourth list item</a>
+					</li>
+				</ul>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-6 col-md justify-content-center" id="foot-info">
+		<div class="row justify content-center">
+			<div class="col-12 col-md" id="foot-info">
+				<p class="text-muted">foot info placeholder text</p>
 			</div>
 		</div>
 	</footer>
