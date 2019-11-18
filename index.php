@@ -75,7 +75,7 @@ include("functions/functions.php");
 					<form method="get" action="results.php" enctype="multipart/form-data">
 						<div class="row justify-content-center">
 							<div class="input-group col-md-12" id="form">
-								<input class="form-control py-2 border-right-0 border" type="text" placeholder="Search">
+								<input class="form-control py-2 border-right-0 border" type="text" placeholder="Search" name="user_query">
 								<span class="input-group-append">
 									<button class="btn btn-outline-secondary border-left-0 border" type="submit" name="search">
 										<i class="fa fa-search"></i>
