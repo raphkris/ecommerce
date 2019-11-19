@@ -85,7 +85,7 @@ include("functions/functions.php");
 	<?php getCatPro(); ?>
 	<?php getBrandPro(); ?>
 
-	<div id="body-content">
+	<div class="body-content">
 		<div class="position-relative overflow-hidden p-3 p-md-5 mb-md-3 text-center bg-light">
 			<div class="col-md-5 p-lg-5 mx-auto my-5">
 				<h1 class="display-4 font-weight-normal">Punny headline</h1>

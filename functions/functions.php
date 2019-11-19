@@ -193,7 +193,7 @@ function getCatPro()
 			echo "
 				<script>
 					$(function() {
-						$('#body-content').remove();
+						$('.body-content').remove();
 					});
 				</script>
 			";
@@ -211,7 +211,7 @@ function getCatPro()
 			echo "
 				<script>
 					$(function() {
-						$('#body-content').remove();
+						$('.body-content').remove();
 					});
 				</script>
 
@@ -244,7 +244,7 @@ function getBrandPro()
 			echo "
 				<script>
 					$(function() {
-						$('#body-content').remove();
+						$('.body-content').remove();
 					});
 				</script>
 			";
@@ -262,7 +262,7 @@ function getBrandPro()
 			echo "
 				<script>
 					$(function() {
-						$('#body-content').remove();
+						$('.body-content').remove();
 					});
 				</script>
 
@@ -273,7 +273,7 @@ function getBrandPro()
 					<a href='details.php?pro_id=$pro_id' style='float:left;'>Details</a>
 					<a href='index.php?pro_id=$pro_id'><button style='float:right'>Add to Cart</button></a>
 				</div>
-				
+
 			";
 		}
 	}
