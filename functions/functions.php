@@ -187,16 +187,17 @@ function getCatPro()
 		$get_cat_pro = "select * from products where product_cat='$cat_id'";
 		$run_cat_pro = mysqli_query($con, $get_cat_pro); 
 		$count_cats = mysqli_num_rows($run_cat_pro);
+
+		echo "
+			<script>
+				$(function() {
+					$('.body-content').remove();
+				});
+			</script>
+		";
 		
 		if($count_cats==0)
 		{
-			echo "
-				<script>
-					$(function() {
-						$('.body-content').remove();
-					});
-				</script>
-			";
 			echo "<h2 style='padding:20px;'>No products where found in this category!</h2>";
 		}
 		
@@ -208,21 +209,30 @@ function getCatPro()
 			$pro_title = $row_cat_pro['product_title'];
 			$pro_price = $row_cat_pro['product_price'];
 			$pro_image = $row_cat_pro['product_image'];
+			// echo "
+			// 	<div id='single_product'>
+			// 		<h3>$pro_title</h3>
+			// 		<img src='admin_area/product_images/$pro_image' width='180' height='180' />
+			// 		<p><b> $ $pro_price </b></p>
+			// 		<a href='details.php?pro_id=$pro_id' style='float:left;'>Details</a>
+			// 		<a href='index.php?pro_id=$pro_id'><button style='float:right'>Add to Cart</button></a>
+			// 	</div>
+			// ";
+
 			echo "
-				<script>
-					$(function() {
-						$('.body-content').remove();
-					});
-				</script>
-
-				<div id='single_product'>
-					<h3>$pro_title</h3>
-					<img src='admin_area/product_images/$pro_image' width='180' height='180' />
-					<p><b> $ $pro_price </b></p>
-					<a href='details.php?pro_id=$pro_id' style='float:left;'>Details</a>
-					<a href='index.php?pro_id=$pro_id'><button style='float:right'>Add to Cart</button></a>
+				<div class='col-sm-4 pt-sm-4'>
+					<a href='details.php?pro_id=$pro_id'>
+						<div class='card'>
+							<div class='card-body'>
+								<img class='card-img-top' src='admin_area/product_images/$pro_image' alt='' height='300' width='200'>
+							</div>
+							<div class='card-body'>
+								<p class='card-text text-left'>$pro_title</p>
+								<p class='card-text text-left text-muted'>$pro_price</p>
+							</div>
+						</div>
+					</a>
 				</div>
-
 			";
 		}
 	}
