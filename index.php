@@ -13,9 +13,13 @@ include("functions/functions.php");
 	<meta name="keywords" content="">
 	<meta name="author" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" type="text/css" href="styles/style.css"> -->
+
 </head>
 
 <body>
@@ -29,17 +33,23 @@ include("functions/functions.php");
 					<path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
 				</svg>
 			</a>
-			<a class="py-2 d-none d-md-inline-block" href="#">Tour</a>
-			<a class="py-2 d-none d-md-inline-block" href="#">Product</a>
-			<a class="py-2 d-none d-md-inline-block" href="#">Features</a>
-			<a class="py-2 d-none d-md-inline-block" href="#">Enterprise</a>
+			<?php getCats(); ?>
+			<div class="dropdown">
+				<a class="py-2 d-none d-md-inline-block" data-toggle="dropdown">Shop</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="all_products.php">All Products</a>
+					<div class="dropdown-divider"></div>
+					<?php getBrands(); ?>
+				</div>
+			</div>
 			<a class="py-2 d-none d-md-inline-block" href="#" data-toggle="modal" data-target="#search-modal">Search</a>
 			<div class="dropdown">
 				<a class="py-2 d-none d-md-inline-block" data-toggle="dropdown">Bag</a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="cart.php">Bag</a>
 					<div class="dropdown-divider"></div>
-					<?php if (isset($_SESSION['customer_email'])) {
+					<?php
+					if (isset($_SESSION['customer_email'])) {
 						echo "<a class='dropdown-item' href='customer/my_account.php'>Account</a>";
 						echo "<a class='dropdown-item' href='logout.php'>Log out</a>";
 					} else {
@@ -52,22 +62,6 @@ include("functions/functions.php");
 		</div>
 	</nav>
 
-	<!-- <ul id="menu">
-		<li>
-			<a href="all_products.php">All Products</a>
-		</li>
-	</ul>
-	<?php getCats(); ?>
-	<?php getBrands(); ?>
-	<?php cart(); ?>
-	<?php total_items(); ?>
-	<?php total_price(); ?>
-	<div id="products_box">
-		<?php getPro(); ?>
-		<?php getCatPro(); ?>
-		<?php getBrandPro(); ?>
-	</div> -->
-
 	<div class="modal" tabindex="-1" role="dialog" id="search-modal">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -75,7 +69,7 @@ include("functions/functions.php");
 					<form method="get" action="results.php" enctype="multipart/form-data">
 						<div class="row justify-content-center">
 							<div class="input-group col-md-12" id="form">
-								<input class="form-control py-2 border-right-0 border" type="text" placeholder="Search" name="user_query">
+								<input class="form-control py-2 border-right-0 border" type="text" placeholder="Search" name="user_query" />
 								<span class="input-group-append">
 									<button class="btn btn-outline-secondary border-left-0 border" type="submit" name="search">
 										<i class="fa fa-search"></i>
@@ -89,42 +83,51 @@ include("functions/functions.php");
 		</div>
 	</div>
 
-	<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-		<div class="col-md-5 p-lg-5 mx-auto my-5">
-			<h1 class="display-4 font-weight-normal">Punny headline</h1>
-			<p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.</p>
-			<a class="btn btn-outline-secondary" href="#">Coming soon</a>
+
+	<?php getCatPro(); ?>
+	<?php getBrandPro(); ?>
+
+	<div id="body-content">
+
+		<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+			<div class="col-md-5 p-lg-5 mx-auto my-5">
+				<h1 class="display-4 font-weight-normal">Punny headline</h1>
+				<p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.</p>
+				<a class="btn btn-outline-secondary" href="#">Coming soon</a>
+			</div>
+			<div class="product-device shadow-sm d-none d-md-block"></div>
+			<div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
 		</div>
-		<div class="product-device shadow-sm d-none d-md-block"></div>
-		<div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+
+		<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+			<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden ">
+				<div class="my-3 p-3">
+					<h2 class="display-5">Another headline</h2>
+					<p class="lead">And an even wittier subheading.</p>
+				</div>
+				<div class="bg-white shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+			</div>
+			<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden ">
+				<div class="my-3 py-3">
+					<h2 class="display-5">Another headline</h2>
+					<p class="lead">And an even wittier subheading.</p>
+				</div>
+				<div class="bg-white shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+			</div>
+		</div>
+
+		<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+			<div class="col-md-5 p-lg-5 mx-auto my-5">
+				<h1 class="display-4 font-weight-normal">Punny headline</h1>
+				<p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.</p>
+				<a class="btn btn-outline-secondary" href="#">Coming soon</a>
+			</div>
+			<div class="product-device shadow-sm d-none d-md-block"></div>
+			<div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+		</div>
+
 	</div>
 
-	<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-		<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden w-50">
-			<div class="my-3 p-3">
-				<h2 class="display-5">Another headline</h2>
-				<p class="lead">And an even wittier subheading.</p>
-			</div>
-			<div class="bg-white shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-		</div>
-		<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden w-50">
-			<div class="my-3 py-3">
-				<h2 class="display-5">Another headline</h2>
-				<p class="lead">And an even wittier subheading.</p>
-			</div>
-			<div class="bg-white shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-		</div>
-	</div>
-
-	<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-		<div class="col-md-5 p-lg-5 mx-auto my-5">
-			<h1 class="display-4 font-weight-normal">Punny headline</h1>
-			<p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.</p>
-			<a class="btn btn-outline-secondary" href="#">Coming soon</a>
-		</div>
-		<div class="product-device shadow-sm d-none d-md-block"></div>
-		<div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
-	</div>
 
 	<footer class="pt-md-5 container" id="foot-contain">
 		<div class="pt-md-5 pl-md-5 row justify-content-around">
@@ -217,6 +220,7 @@ include("functions/functions.php");
 	</footer>
 
 	<!-- Optional JavaScript -->
+	<script src="js/script.js"></script>
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

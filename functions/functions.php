@@ -115,8 +115,13 @@ function getCats()
 	{
 		$cat_id = $row_cats['cat_id']; 
 		$cat_title = $row_cats['cat_title'];
-	
-		echo "<li><a href='index.php?cat=$cat_id'>$cat_title</a></li>";
+
+		// echo "<li><a href='index.php?cat=$cat_id'>$cat_title</a></li>";
+
+		// echo "<a class='py-2 d-none d-md-inline-block' href='index.php?cat=$cat_id' onclick='testDestroy();'>$cat_title</a>";
+
+		echo "<a class='py-2 d-none d-md-inline-block' href='index.php?cat=$cat_id'>$cat_title</a>";
+
 	}
 
 }
@@ -133,7 +138,9 @@ function getBrands()
 		$brand_id = $row_brands['brand_id']; 
 		$brand_title = $row_brands['brand_title'];
 	
-		echo "<li><a href='index.php?brand=$brand_id'>$brand_title</a></li>";
+		// echo "<li><a href='index.php?brand=$brand_id'>$brand_title</a></li>";
+
+		echo "<a class='dropdown-item' href='index.php?brand=$brand_id'>$brand_title</a>";
 	}
 
 }
@@ -183,6 +190,13 @@ function getCatPro()
 		
 		if($count_cats==0)
 		{
+			echo "
+				<script>
+					$(function() {
+						$('#body-content').remove();
+					});
+				</script>
+			";
 			echo "<h2 style='padding:20px;'>No products where found in this category!</h2>";
 		}
 		
@@ -195,6 +209,11 @@ function getCatPro()
 			$pro_price = $row_cat_pro['product_price'];
 			$pro_image = $row_cat_pro['product_image'];
 			echo "
+				<script>
+					$(function() {
+						$('#body-content').remove();
+					});
+				</script>
 				<div id='single_product'>
 					<h3>$pro_title</h3>
 					<img src='admin_area/product_images/$pro_image' width='180' height='180' />
@@ -220,6 +239,13 @@ function getBrandPro()
 		
 		if($count_brands==0)
 		{
+			echo "
+				<script>
+					$(function() {
+						$('#body-content').remove();
+					});
+				</script>
+			";
 			echo "<h2 style='padding:20px;'>No products where found associated with this brand!!</h2>";
 		}
 		
@@ -232,6 +258,11 @@ function getBrandPro()
 			$pro_price = $row_brand_pro['product_price'];
 			$pro_image = $row_brand_pro['product_image'];
 			echo "
+				<script>
+					$(function() {
+						$('#body-content').remove();
+					});
+				</script>
 				<div id='single_product'>
 					<h3>$pro_title</h3>
 					<img src='admin_area/product_images/$pro_image' width='180' height='180' />
