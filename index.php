@@ -82,7 +82,21 @@ include("functions/functions.php");
 		</div>
 	</div>
 
-	<?php getCatPro(); ?>
+	<?php
+
+	echo "
+			<div class='position-relative overflow-hidden p-3 p-md-5 mb-md-3 text-center bg-light'>
+				<div class='col-md-5 p-lg-5 mx-auto my-5'>
+					<h1 class='display-4 font-weight-normal'>Punny headline</h1>
+					<p class='lead font-weight-normal'>And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple\’s marketing pages.</p>
+					<a class='btn btn-outline-secondary' href='#'>Coming soon</a>
+				</div>
+				<div class='product-device shadow-sm d-none d-md-block'></div>
+				<div class='product-device product-device-2 shadow-sm d-none d-md-block'></div>
+			</div>
+		";
+
+	getCatPro(); ?>
 	<?php getBrandPro(); ?>
 
 	<div class="body-content">
@@ -141,8 +155,8 @@ include("functions/functions.php");
 		</div>
 	</div>
 
-	<footer class="pt-md-5 container" id="foot-contain">
-		<div class="pt-md-5 pl-md-5 row justify-content-around">
+	<footer class="pt-5 pt-md-5 container" id="foot-contain">
+		<div class="pt-5 mt-3 pt-md-5 pl-md-5 row justify-content-around">
 			<div class="pl-md-4 col-2 col-md">
 				<h7>first header</h7>
 				<ul class="list-unstyled text-small">
@@ -224,7 +238,7 @@ include("functions/functions.php");
 				</ul>
 			</div>
 		</div>
-		<div class="pt-md-5 row text-center">
+		<div class="pt-3 pt-md-5 row text-center">
 			<div class="col-12 col-md" id="foot-info">
 				<p class="text-muted">foot info placeholder text</p>
 			</div>

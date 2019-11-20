@@ -200,6 +200,12 @@ function getCatPro()
 		{
 			echo "<h2 style='padding:20px;'>No products where found in this category!</h2>";
 		}
+
+		echo "
+			<div class='row justify-content-center p-xs-0 m-xs-0 '>
+				<div class='p-xs-0 m-xs-0'>
+					<div class='row justify-content-start p-xs-0 m-xs-0'>
+		";
 		
 		while($row_cat_pro=mysqli_fetch_array($run_cat_pro))
 		{
@@ -209,6 +215,71 @@ function getCatPro()
 			$pro_title = $row_cat_pro['product_title'];
 			$pro_price = $row_cat_pro['product_price'];
 			$pro_image = $row_cat_pro['product_image'];
+
+			echo "
+						<div class='col-4'>
+							<a href='details.php?pro_id=$pro_id'>
+								<div class='card border-0'>
+									<div class='card-body px-0 mb-0 px-sm-0'>
+										<img class='card-img-top' src='admin_area/product_images/$pro_image' alt='' height='400' width='auto'>
+									</div>
+									<div class='card-body px-sm-0 py-0 pl-5 mb-0'>
+										<p class='card-text text-left'>$pro_title</p>
+										<p class='card-text text-left text-muted'>$pro_price</p>
+									</div>
+								</div>
+							</a>
+						</div>
+			";
+		}
+
+		echo "
+					</div>
+				</div>
+			</div>
+		";
+
+	}
+
+}
+
+function getBrandPro()
+{
+	if(isset($_GET['brand']))
+	{
+		$brand_id = $_GET['brand'];
+		global $con; 
+		$get_brand_pro = "select * from products where product_brand='$brand_id'";
+		$run_brand_pro = mysqli_query($con, $get_brand_pro); 
+		$count_brands = mysqli_num_rows($run_brand_pro);
+
+		echo "
+			<script>
+				$(function() {
+					$('.body-content').remove();
+				});
+			</script>
+		";
+		
+		if($count_brands==0)
+		{
+			echo "<h2 style='padding:20px;'>No products where found associated with this brand!!</h2>";
+		}
+
+		echo "
+			<div class='row justify-content-center'>
+				<div class='col-sm-6'>
+					<div class='row justify-content-start'>
+		";
+		
+		while($row_brand_pro=mysqli_fetch_array($run_brand_pro))
+		{
+			$pro_id = $row_brand_pro['product_id'];
+			$pro_cat = $row_brand_pro['product_cat'];
+			$pro_brand = $row_brand_pro['product_brand'];
+			$pro_title = $row_brand_pro['product_title'];
+			$pro_price = $row_brand_pro['product_price'];
+			$pro_image = $row_brand_pro['product_image'];
 			// echo "
 			// 	<div id='single_product'>
 			// 		<h3>$pro_title</h3>
@@ -224,7 +295,7 @@ function getCatPro()
 					<a href='details.php?pro_id=$pro_id'>
 						<div class='card'>
 							<div class='card-body'>
-								<img class='card-img-top' src='admin_area/product_images/$pro_image' alt='' height='300' width='200'>
+								<img class='card-img-top' src='admin_area/product_images/$pro_image' alt='' height='200' width='200'>
 							</div>
 							<div class='card-body'>
 								<p class='card-text text-left'>$pro_title</p>
@@ -235,57 +306,13 @@ function getCatPro()
 				</div>
 			";
 		}
-	}
 
-}
-
-function getBrandPro()
-{
-	if(isset($_GET['brand']))
-	{
-		$brand_id = $_GET['brand'];
-		global $con; 
-		$get_brand_pro = "select * from products where product_brand='$brand_id'";
-		$run_brand_pro = mysqli_query($con, $get_brand_pro); 
-		$count_brands = mysqli_num_rows($run_brand_pro);
-		
-		if($count_brands==0)
-		{
-			echo "
-				<script>
-					$(function() {
-						$('.body-content').remove();
-					});
-				</script>
-			";
-			echo "<h2 style='padding:20px;'>No products where found associated with this brand!!</h2>";
-		}
-		
-		while($row_brand_pro=mysqli_fetch_array($run_brand_pro))
-		{
-			$pro_id = $row_brand_pro['product_id'];
-			$pro_cat = $row_brand_pro['product_cat'];
-			$pro_brand = $row_brand_pro['product_brand'];
-			$pro_title = $row_brand_pro['product_title'];
-			$pro_price = $row_brand_pro['product_price'];
-			$pro_image = $row_brand_pro['product_image'];
-			echo "
-				<script>
-					$(function() {
-						$('.body-content').remove();
-					});
-				</script>
-
-				<div id='single_product'>
-					<h3>$pro_title</h3>
-					<img src='admin_area/product_images/$pro_image' width='180' height='180' />
-					<p><b> $ $pro_price </b></p>
-					<a href='details.php?pro_id=$pro_id' style='float:left;'>Details</a>
-					<a href='index.php?pro_id=$pro_id'><button style='float:right'>Add to Cart</button></a>
+		echo "
+					</div>
 				</div>
+			</div>
+		";
 
-			";
-		}
 	}
 }
 
