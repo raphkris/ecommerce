@@ -216,7 +216,7 @@ function getCatPro()
 
 			echo "
 				<a href='details.php?pro_id=$pro_id'>
-					<div class='bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden'>
+					<div class='bg-light mx-md-3 pt-3 pt-md-5 text-center overflow-hidden'>
 						<div class='my-3 p-3'>
 							<img class='card-img-top' src='admin_area/product_images/$pro_image' alt='' height='200' width='200'>
 							<p class='card-text text-left'>$pro_title</p>
