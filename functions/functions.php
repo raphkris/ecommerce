@@ -202,9 +202,7 @@ function getCatPro()
 		}
 
 		echo "
-			<div class='row justify-content-center p-xs-0 m-xs-0 '>
-				<div class='p-xs-0 m-xs-0'>
-					<div class='row justify-content-start p-xs-0 m-xs-0'>
+			<div class='row justify-content-start'>
 		";
 		
 		while($row_cat_pro=mysqli_fetch_array($run_cat_pro))
@@ -217,25 +215,19 @@ function getCatPro()
 			$pro_image = $row_cat_pro['product_image'];
 
 			echo "
-						<div class='col-4'>
-							<a href='details.php?pro_id=$pro_id'>
-								<div class='card border-0'>
-									<div class='card-body px-0 mb-0 px-sm-0'>
-										<img class='card-img-top' src='admin_area/product_images/$pro_image' alt='' height='400' width='auto'>
-									</div>
-									<div class='card-body px-sm-0 py-0 pl-5 mb-0'>
-										<p class='card-text text-left'>$pro_title</p>
-										<p class='card-text text-left text-muted'>$pro_price</p>
-									</div>
-								</div>
-							</a>
+				<a href='details.php?pro_id=$pro_id'>
+					<div class='bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden'>
+						<div class='my-3 p-3'>
+							<img class='card-img-top' src='admin_area/product_images/$pro_image' alt='' height='200' width='200'>
+							<p class='card-text text-left'>$pro_title</p>
+							<p class='card-text text-left text-muted'>$pro_price</p>
 						</div>
+					</div>
+				</a>
 			";
 		}
 
 		echo "
-					</div>
-				</div>
 			</div>
 		";
 
