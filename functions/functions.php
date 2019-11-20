@@ -202,7 +202,9 @@ function getCatPro()
 		}
 
 		echo "
-			<div class='row justify-content-start'>
+			<div class='row justify-content-center no-gutters'>
+			<div class='col-md-10 col-12 p-0'>
+			<div class='row justify-content-center no-gutters'>
 		";
 		
 		while($row_cat_pro=mysqli_fetch_array($run_cat_pro))
@@ -215,10 +217,10 @@ function getCatPro()
 			$pro_image = $row_cat_pro['product_image'];
 
 			echo "
-				<a href='details.php?pro_id=$pro_id'>
-					<div class='bg-light mx-md-3 pt-3 pt-md-5 text-center overflow-hidden'>
-						<div class='my-3 p-3'>
-							<img class='card-img-top' src='admin_area/product_images/$pro_image' alt='' height='200' width='200'>
+				<a href='details.php?pro_id=$pro_id' class='col-sm-6 col-md-6 col-lg-4' style='max-width:576px;'>
+					<div class='bg-light mx-md-1 pt-0 px-0 text-center overflow-hidden'>
+						<div class='m-3 p-3'>
+							<img class='card-img-top' src='admin_area/product_images/$pro_image' alt='' style='height:auto;max-height:500px;width:200px;'>
 							<p class='card-text text-left'>$pro_title</p>
 							<p class='card-text text-left text-muted'>$pro_price</p>
 						</div>
@@ -228,6 +230,8 @@ function getCatPro()
 		}
 
 		echo "
+			</div>
+			</div>
 			</div>
 		";
 
