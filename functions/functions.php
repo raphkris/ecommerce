@@ -201,12 +201,18 @@ function getCatPro()
 			echo "<h2 style='padding:20px;'>No products where found in this category!</h2>";
 		}
 
+		// echo "
+		// 	<div class='row justify-content-center no-gutters'>
+		// 	<div class='col-md-10 col-12 p-0'>
+		// 	<div class='row justify-content-center no-gutters'>
+		// ";
+
 		echo "
-			<div class='row justify-content-center no-gutters'>
-			<div class='col-md-10 col-12 p-0'>
-			<div class='row justify-content-center no-gutters'>
+			<div class='product-container'>
+				<div class='row'>
+			
 		";
-		
+
 		while($row_cat_pro=mysqli_fetch_array($run_cat_pro))
 		{
 			$pro_id = $row_cat_pro['product_id'];
@@ -216,24 +222,78 @@ function getCatPro()
 			$pro_price = $row_cat_pro['product_price'];
 			$pro_image = $row_cat_pro['product_image'];
 
+			// echo "
+			// 	<a href='details.php?pro_id=$pro_id' class='col-sm-6 col-md-6 col-lg-4' style='max-width:576px;'>
+			// 		<div class='bg-light mx-md-1 pt-0 px-0 text-center overflow-hidden'>
+			// 			<div class='m-3 p-3'>
+			// 				<img class='card-img-top' src='admin_area/product_images/$pro_image' alt='' style='height:auto;max-height:500px;width:200px;'>
+			// 				<p class='card-text text-left'>$pro_title</p>
+			// 				<p class='card-text text-left text-muted'>$pro_price</p>
+			// 			</div>
+			// 		</div>
+			// 	</a>
+			// ";
+
+			// <svg class='bd-placeholder-img card-img-top' width='100%' height='225' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid slice' focusable='false' role='img' aria-label='Placeholder: Thumbnail'>
+			// 	<title>Placeholder</title>
+			// 	<rect width='100%' height='100%' fill='#55595c'></rect>
+			// 	<text s='50%' y='50%' fill='#eceeef' dy='.3em'>Thumbnail</text>
+			// </svg>
+
 			echo "
-				<a href='details.php?pro_id=$pro_id' class='col-sm-6 col-md-6 col-lg-4' style='max-width:576px;'>
-					<div class='bg-light mx-md-1 pt-0 px-0 text-center overflow-hidden'>
-						<div class='m-3 p-3'>
-							<img class='card-img-top' src='admin_area/product_images/$pro_image' alt='' style='height:auto;max-height:500px;width:200px;'>
-							<p class='card-text text-left'>$pro_title</p>
-							<p class='card-text text-left text-muted'>$pro_price</p>
+				<div class='col-md-4'>
+					<div class='card-mb-4 shadow-sm'>
+						<div width='100%' height='225'>
+							<img class='bd-placeholder-img card-img-top' src='admin_area/product_images/$pro_image' alt='' width='100%' height='100%'>
+						</div>
+						<div class='card-body'>
+							<p class='card-text'>$pro_brand</p>
+							<div class='d-flex justify-content-between align-items-center'>
+								<div class='btn-group'>
+									<button type='button' class='btn btn-sm btn-outline-secondary'>View</button>
+									<button type='button' class='btn btn-sm btn-outline-secondary'>Edit</button>
+								</div>
+							</div>
+							<small class='card-text text-muted'>$pro_title</small>
 						</div>
 					</div>
-				</a>
+				</div>
 			";
 		}
 
+		// 	echo "
+		// 		<div class='col-md-4'>
+		// 			<div class='card-mb-4 shadow-sm'>
+		// 				<!--
+		// 				<svg class='bd-placeholder-img card-img-top' width='100%' height='225' preserveAspectRatio='xMidYMid slice' focusable='false' role='img' aria-label='Placeholder: Thumbnail'>
+		// 				</svg>
+		// 				-->
+		// 				<img src='admin_area/product_images/$pro_image' 'alt='' width='100%' height='225'/>
+		// 				<div class='card-body'>
+		// 					<p class='card-text'>$pro_brand</p>
+		// 					<div class='d-flex justify-content-between align-items-center'>
+		// 						<div class='btn-group'>
+		// 							<button type='button' class='btn btn-sm btn-outline-secondary'>View</button>
+		// 							<button type='button' class='btn btn-sm btn-outline-secondary'>Edit</button>
+		// 						</div>
+		// 					</div>
+		// 					<small class='card-text text-muted'>$pro_title</small>
+		// 				</div>
+		// 			</div>
+		// 		</div>
+		// 	";
+		// }
+
 		echo "
-			</div>
-			</div>
+				</div>
 			</div>
 		";
+
+		// echo "
+		// 	</div>
+		// 	</div>
+		// 	</div>
+		// ";
 
 	}
 
