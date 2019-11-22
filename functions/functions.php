@@ -184,7 +184,16 @@ function getCatPro()
 	{
 		$cat_id = $_GET['cat'];
 		global $con; 
-		$get_cat_pro = "select * from products where product_cat='$cat_id'";
+		// $get_cat_pro = "select * from products where product_cat='$cat_id'";
+
+		$get_cat_pro = "
+		select *, brand_title
+		from products
+			left join brands
+				on products.product_brand = brands.brand_id
+		where product_cat='$cat_id'
+		";
+
 		$run_cat_pro = mysqli_query($con, $get_cat_pro); 
 		$count_cats = mysqli_num_rows($run_cat_pro);
 
@@ -218,6 +227,7 @@ function getCatPro()
 			$pro_id = $row_cat_pro['product_id'];
 			$pro_cat = $row_cat_pro['product_cat'];
 			$pro_brand = $row_cat_pro['product_brand'];
+			$pro_brand_title = $row_cat_pro['brand_title'];
 			$pro_title = $row_cat_pro['product_title'];
 			$pro_price = $row_cat_pro['product_price'];
 			$pro_image = $row_cat_pro['product_image'];
@@ -247,7 +257,7 @@ function getCatPro()
 							<img class='bd-placeholder-img card-img-top' src='admin_area/product_images/$pro_image' alt='' width='100%' height='100%'>
 						</div>
 						<div class='card-body'>
-							<p class='card-text'>$pro_brand</p>
+							<p class='card-text'>$pro_brand_title</p>
 							<div class='d-flex justify-content-between align-items-center'>
 								<div class='btn-group'>
 									<button type='button' class='btn btn-sm btn-outline-secondary'>View</button>
