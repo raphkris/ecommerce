@@ -54,6 +54,13 @@
   }
 }
 
+a.product-link,
+a.product-link:hover,
+a.product-link:link,
+a.product-link:visited {
+  text-decoration: none;
+}
+
 /*
  * Custom translucent site header
  */
