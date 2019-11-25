@@ -243,11 +243,12 @@ function getCatPro()
 				</div>
 			";
 
-			echo "
-					</div>
-				</div>
-			";
 		}
+
+		echo "
+				</div>
+			</div>
+		";
 	}
 }
 
@@ -257,7 +258,15 @@ function getBrandPro()
 	{
 		$brand_id = $_GET['brand'];
 		global $con; 
-		$get_brand_pro = "select * from products where product_brand='$brand_id'";
+
+		$get_brand_pro = "
+		select *, brand_title
+		from products
+			left join brands
+				on products.product_brand = brands.brand_id
+		where product_brand='$brand_id'
+		";
+
 		$run_brand_pro = mysqli_query($con, $get_brand_pro); 
 		$count_brands = mysqli_num_rows($run_brand_pro);
 
@@ -275,48 +284,40 @@ function getBrandPro()
 		}
 
 		echo "
-			<div class='row justify-content-center'>
-				<div class='col-sm-6'>
-					<div class='row justify-content-start'>
+			<div class='product-container'>
+					<div class='row pt-5 mt-5 mt-md-3 mt-lg-5'>
 		";
 		
 		while($row_brand_pro=mysqli_fetch_array($run_brand_pro))
 		{
 			$pro_id = $row_brand_pro['product_id'];
-			$pro_cat = $row_brand_pro['product_cat'];
-			$pro_brand = $row_brand_pro['product_brand'];
+			$pro_brand_title = $row_brand_pro['product_brand'];
 			$pro_title = $row_brand_pro['product_title'];
 			$pro_price = $row_brand_pro['product_price'];
 			$pro_image = $row_brand_pro['product_image'];
-			// echo "
-			// 	<div id='single_product'>
-			// 		<h3>$pro_title</h3>
-			// 		<img src='admin_area/product_images/$pro_image' width='180' height='180' />
-			// 		<p><b> $ $pro_price </b></p>
-			// 		<a href='details.php?pro_id=$pro_id' style='float:left;'>Details</a>
-			// 		<a href='index.php?pro_id=$pro_id'><button style='float:right'>Add to Cart</button></a>
-			// 	</div>
-			// ";
 
 			echo "
-				<div class='col-sm-4 pt-sm-4'>
-					<a href='details.php?pro_id=$pro_id'>
-						<div class='card'>
-							<div class='card-body'>
-								<img class='card-img-top' src='admin_area/product_images/$pro_image' alt='' height='200' width='200'>
-							</div>
-							<div class='card-body'>
-								<p class='card-text text-left'>$pro_title</p>
-								<p class='card-text text-left text-muted'>$pro_price</p>
+				<div class='col-md-4 pb-5'>
+					<div class='card-mb-4 '>
+						<div width='100%' height='225'>
+							<a href='details.php?pro_id=$pro_id'>
+								<img class='bd-placeholder-img card-img-top' src='admin_area/product_images/$pro_image' alt='' width='100%' height='100%'>
+							</a>
+						</div>
+						<div class='card-body pt-5 pb-0 px-0'>
+							<div class='d-flex justify-content-between align-items-center'>
+								<a href='details.php?pro_id=$pro_id' class='product-link'>
+									<small class='card-text text-muted'>$pro_brand_title $pro_title</small>
+								</a>
+								<small class='card-text'>$$pro_price</small>
 							</div>
 						</div>
-					</a>
+					</div>
 				</div>
 			";
 		}
 
 		echo "
-					</div>
 				</div>
 			</div>
 		";
