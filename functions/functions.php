@@ -297,7 +297,7 @@ function getBrandPro()
 		while($row_brand_pro=mysqli_fetch_array($run_brand_pro))
 		{
 			$pro_id = $row_brand_pro['product_id'];
-			$pro_brand_title = $row_brand_pro['product_brand'];
+			$pro_brand_title = $row_brand_pro['brand_title'];
 			$pro_title = $row_brand_pro['product_title'];
 			$pro_price = $row_brand_pro['product_price'];
 			$pro_image = $row_brand_pro['product_image'];
