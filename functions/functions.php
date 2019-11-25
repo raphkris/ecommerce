@@ -247,6 +247,7 @@ function getCatPro()
 					</div>
 				</div>
 			";
+		}
 	}
 }
 
