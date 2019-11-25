@@ -203,17 +203,20 @@ function getCatPro()
 				});
 			</script>
 		";
-		
-		if($count_cats==0)
-		{
-			echo "<h2 style='padding:20px;'>No products where found in this category!</h2>";
-		}
 
 		echo "
 			<div class='product-container'>
 				<div class='row pt-5 mt-5 mt-md-3 mt-lg-5'>
-			
 		";
+		
+		if($count_cats==0)
+		{
+			echo "
+				<div class='col-md-4 pb-5'>
+					<h2 class='font-weight-light text-muted'>Nothing to see here . . .</h2>
+				</div>
+			";
+		}
 
 		while($row_cat_pro=mysqli_fetch_array($run_cat_pro))
 		{
@@ -277,16 +280,19 @@ function getBrandPro()
 				});
 			</script>
 		";
-		
-		if($count_brands==0)
-		{
-			echo "<h2 style='padding:20px;'>No products where found associated with this brand!!</h2>";
-		}
 
 		echo "
 			<div class='product-container'>
-					<div class='row pt-5 mt-5 mt-md-3 mt-lg-5'>
+				<div class='row pt-5 mt-5 mt-md-3 mt-lg-5'>
 		";
+
+		if ($count_brands == 0) {
+			echo "
+				<div class='col-md-4 pb-5'>
+					<h2 class='font-weight-light text-muted'>Nothing to see here . . .</h2>
+				</div>
+			";
+		}
 		
 		while($row_brand_pro=mysqli_fetch_array($run_brand_pro))
 		{
