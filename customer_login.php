@@ -119,13 +119,13 @@ include("functions/functions.php");
 							$check_customer = mysqli_num_rows($run_c);
 
 							if ($check_customer == 0) { // your email or password was entered incorrectly
-								echo "
-									<script>
-										$('.form-signin > br').remove();
-										var content = '<div class='alert alert-danger' role='alert'>Your email or password was entered incorrectly.</div>';
-										$('.form-signin > h1').after(content);
-									</script>
-								";
+								// echo "
+								// 	<script>
+								// 		$('.form-signin > br').remove();
+								// 		var content = '<div class='alert alert-danger' role='alert'>Your email or password was entered incorrectly.</div>';
+								// 		$('.form-signin > h1').after(content);
+								// 	</script>
+								// ";
 								exit();
 							}
 
