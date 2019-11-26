@@ -4,98 +4,6 @@ include("functions/functions.php");
 include("includes/db.php");
 ?>
 
-<form action="customer_register.php" method="post" enctype="multipart/form-data">
-	<table align="center" width="750">
-
-		<tr align="center">
-			<td colspan="6">
-				<h2>Create an Account</h2>
-			</td>
-		</tr>
-
-		<tr>
-			<td align="right">Customer Name:</td>
-			<td>
-				<input type="text" name="c_name" required />
-			</td>
-		</tr>
-
-		<tr>
-			<td align="right">Customer Email:</td>
-			<td>
-				<input type="text" name="c_email" required />
-			</td>
-		</tr>
-
-		<tr>
-			<td align="right">Customer Password:</td>
-			<td>
-				<input type="password" name="c_pass" required />
-			</td>
-		</tr>
-
-		<tr>
-			<td align="right">Customer Image:</td>
-			<td>
-				<input type="file" name="c_image" required />
-			</td>
-		</tr>
-
-		<tr>
-			<td align="right">Customer Country:</td>
-			<td>
-				<select name="c_country">
-					<option>Select a Country</option>
-					<option>Afghanistan</option>
-					<option>India</option>
-					<option>Japan</option>
-					<option>Pakistan</option>
-					<option>Israel</option>
-					<option>Nepal</option>
-					<option>United Arab Emirates</option>
-					<option>United States</option>
-					<option>United Kingdom</option>
-				</select>
-			</td>
-		</tr>
-
-		<tr>
-			<td align="right">Customer City:</td>
-			<td>
-				<input type="text" name="c_city" required />
-			</td>
-		</tr>
-
-		<tr>
-			<td align="right">Customer Contact:</td>
-			<td>
-				<input type="text" name="c_contact" required />
-			</td>
-		</tr>
-
-		<tr>
-			<td align="right">Customer Address</td>
-			<td>
-				<input type="text" name="c_address" required />
-			</td>
-		</tr>
-
-		<tr align="center">
-			<td colspan="6">
-				<input type="submit" name="register" value="Create Account" />
-			</td>
-		</tr>
-
-	</table>
-</form>
-
-
-
-
-
-
-
-
 <!DOCTYPE HTML>
 <html lang="en">
 
@@ -175,74 +83,66 @@ include("includes/db.php");
 		</div>
 	</div>
 
-	<?php
-	getCatPro();
-	getBrandPro();
-	?>
-
 	<div class="body-content">
-		<div class="position-relative overflow-hidden p-3 p-md-5 mb-md-3 text-center bg-light">
-			<div class="col-md-5 p-lg-5 mx-auto my-5">
-				<h1 class="display-4 font-weight-normal">Punny headline</h1>
-				<p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.</p>
-				<a class="btn btn-outline-secondary" href="#">Coming soon</a>
-			</div>
-			<div class="product-device shadow-sm d-none d-md-block"></div>
-			<div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
-		</div>
+		<div class="container"">
+			<div class='row pt-5 pl-4 mt-5 justify-content-start'>
+				<div class='col-12 pb-5 justify-content-start'>
 
-		<div class="position-relative overflow-hidden p-3 p-md-5 mb-md-3 text-center bg-light">
-			<div class="col-md-5 p-lg-5 mx-auto my-5">
-				<h1 class="display-4 font-weight-normal">Punny headline</h1>
-				<p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.</p>
-				<a class="btn btn-outline-secondary" href="#">Coming soon</a>
-			</div>
-			<div class="product-device shadow-sm d-none d-md-block"></div>
-			<div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
-		</div>
+					<form class="form-signin" method="post" action="customer_register.php" enctype="multipart/form-data">
+						<h1>Create Your Account.</h1>
+						<br />
+						<br />
+						<div class="form-group form-label-group" style="width:350px;">
+							<input class="form-control" type="text" name="c_name" placeholder="name" id="registerName" required>
+							<label for="registerName">name</label>
+						</div>
+						<div class="form-group form-label-group" style="width:350px;">
+							<input class="form-control" type="text" name="c_email" placeholder="email" id="registerEmail" required>
+							<label for="registerEmail">email</label>
+						</div>
+						<div class="form-group form-label-group" style="width:350px">
+							<input class="form-control" type="password" name="c_pass" placeholder="password" id="registerPassword" required>
+							<label for="registerPassword">password</label>
+						</div>
+						<div class="form-group custom-file" style="width:350px">
+							<input class="custom-file-input" type="file" name="c_pass" id="customerImage" required>
+							<label class="custom-file-label" for="registerImage">image</label>
+						</div>
+						<div class="form-group form-label-group" style="width:350px">
+							<select class="custom-select" name="c_country" id="registerCountry" required>
+								<option value="">Select Country or Region</option>
+								<option value="Afghanistan">Afghanistan</option>
+								<option value="India">India</option>
+								<option value="Japan">Japan</option>
+								<option value="Pakistan">Pakistan</option>
+								<option value="Israel">Israel</option>
+								<option value="Nepal">Nepal</option>
+								<option value="United Arab Emirates">United Arab Emirates</option>
+								<option value="United States">United States</option>
+								<option value="United Kingdom">United Kingdom</option>
+							</select>
+							<!-- <label for="registerCountry">country</label> -->
+						</div>
+						<div class="form-group form-label-group" style="width:350px;">
+							<input class="form-control" type="text" name="c_city" placeholder="city" id="registerCity" required>
+							<label for="registerCity">city</label>
+						</div>
+						<div class="form-group form-label-group" style="width:350px;">
+							<input class="form-control" type="text" name="c_contact" placeholder="contact" id="registerContact" required>
+							<label for="registerContact">contact</label>
+						</div>
+						<div class="form-group form-label-group" style="width:350px;">
+							<input class="form-control" type="text" name="c_address" placeholder="address" id="registerAddress" required>
+							<label for="registerAddress">address</label>
+						</div>
+						<div class="form-group" style="width:350px;">
+							<br />
+							<button class="btn btn-outline-primary" type="submit" name="register" name="">Register</button>
+						</div>
+					</form>
 
-		<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-			<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden ">
-				<div class="my-3 p-3">
-					<h2 class="display-5">Another headline</h2>
-					<p class="lead">And an even wittier subheading.</p>
 				</div>
-				<div class="bg-white shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
 			</div>
-			<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden ">
-				<div class="my-3 py-3">
-					<h2 class="display-5">Another headline</h2>
-					<p class="lead">And an even wittier subheading.</p>
-				</div>
-				<div class="bg-white shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-			</div>
-		</div>
-
-		<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-			<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden ">
-				<div class="my-3 p-3">
-					<h2 class="display-5">Another headline</h2>
-					<p class="lead">And an even wittier subheading.</p>
-				</div>
-				<div class="bg-white shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-			</div>
-			<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden ">
-				<div class="my-3 py-3">
-					<h2 class="display-5">Another headline</h2>
-					<p class="lead">And an even wittier subheading.</p>
-				</div>
-				<div class="bg-white shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-			</div>
-		</div>
-
-		<div class="position-relative overflow-hidden p-3 p-md-5 mt-md-3 mb-md-5 text-center bg-light">
-			<div class="col-md-5 p-lg-5 mx-auto my-5">
-				<h1 class="display-4 font-weight-normal">Punny headline</h1>
-				<p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.</p>
-				<a class="btn btn-outline-secondary" href="#">Coming soon</a>
-			</div>
-			<div class="product-device shadow-sm d-none d-md-block"></div>
-			<div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
 		</div>
 	</div>
 
@@ -346,14 +246,6 @@ include("includes/db.php");
 </body>
 
 </html>
-
-
-
-
-
-
-
-
 
 <?php
 if (isset($_POST['register'])) {
