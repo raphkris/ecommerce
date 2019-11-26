@@ -88,15 +88,17 @@ include("functions/functions.php");
 			<div class='row pt-5 pl-4 mt-5 justify-content-start'>
 				<div class='col-12 pb-5 justify-content-start'>
 
-					<form method="post">
+					<form class="form-signin" method="post">
 						<h1>Please sign in.</h1>
 						<br />
 						<br />
-						<div class="form-group" style="width:350px;">
-							<input class="form-control" type="text" name="email" placeholder="email">
+						<div class="form-group form-label-group" style="width:350px;">
+							<input class="form-control" type="text" name="email" placeholder="email" id="loginEmail">
+							<label for="loginEmail">email</label>
 						</div>
-						<div class="form-group" style="width:350px;">
-							<input class="form-control" type="password" name="pass" placeholder="password">
+						<div class="form-group form-label-group" style="width:350px;">
+							<input class="form-control" type="password" name="pass" placeholder="password" id="loginPassword">
+							<label for="loginPassword">password</label>
 						</div>
 						<div class="form-group" style="width:350px;">
 							<br />
