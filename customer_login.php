@@ -110,6 +110,42 @@ include("functions/functions.php");
 					<br />
 					<small class="text-muted"><a href="#">make account</a></small>
 
+					<?php
+						if (isset($_POST['login'])) {
+							$c_email = $_POST['email'];
+							$c_pass = $_POST['pass'];
+							$sel_c = "select * from customers where customer_pass='$c_pass' AND customer_email='$c_email'";
+							$run_c = mysqli_query($con, $sel_c);
+							$check_customer = mysqli_num_rows($run_c);
+
+							if ($check_customer == 0) { // your email or password was entered incorrectly
+								echo "
+									<script>
+										$('.form-signin > br').remove();
+										var content = '<div class='alert alert-danger' role='alert'>Your email or password was entered incorrectly.</div>';
+										$('.form-signin > h1').after(content);
+									</script>
+								";
+								exit();
+							}
+
+							$ip = getIp();
+							$sel_cart = "select * from cart where ip_add='$ip'";
+							$run_cart = mysqli_query($con, $sel_cart);
+							$check_cart = mysqli_num_rows($run_cart);
+
+							if ($check_customer > 0 and $check_cart == 0) { // if login details correct, cart is empty, go to account
+								$_SESSION['customer_email'] = $c_email;
+								echo "<script>alert('You logged in successfully, Thanks!')</script>";
+								echo "<script>window.open('customer/my_account.php','_self')</script>";
+							} else { // if login details correct, cart not empty, go to checkout
+								$_SESSION['customer_email'] = $c_email;
+								echo "<script>alert('You logged in successfully, Thanks!')</script>";
+								echo "<script>window.open('checkout.php','_self')</script>";
+							}
+						}
+					?>
+
 				</div>
 			</div>
 		</div>
@@ -216,35 +252,3 @@ include("functions/functions.php");
 </body>
 
 </html>
-
-<?php
-if (isset($_POST['login'])) {
-	$c_email = $_POST['email'];
-	$c_pass = $_POST['pass'];
-	$sel_c = "select * from customers where customer_pass='$c_pass' AND customer_email='$c_email'";
-	$run_c = mysqli_query($con, $sel_c);
-	$check_customer = mysqli_num_rows($run_c);
-
-	if ($check_customer == 0) { // if login details incorrect | run a script adding invalid-input class to elements
-		echo "
-
-		";
-		exit();
-	}
-
-	$ip = getIp();
-	$sel_cart = "select * from cart where ip_add='$ip'";
-	$run_cart = mysqli_query($con, $sel_cart);
-	$check_cart = mysqli_num_rows($run_cart);
-
-	if ($check_customer > 0 and $check_cart == 0) { // if login details correct, cart is empty, go to account
-		$_SESSION['customer_email'] = $c_email;
-		echo "<script>alert('You logged in successfully, Thanks!')</script>";
-		echo "<script>window.open('customer/my_account.php','_self')</script>";
-	} else { // if login details correct, cart not empty, go to checkout
-		$_SESSION['customer_email'] = $c_email;
-		echo "<script>alert('You logged in successfully, Thanks!')</script>";
-		echo "<script>window.open('checkout.php','_self')</script>";
-	}
-}
-?>
