@@ -84,9 +84,9 @@ include("includes/db.php");
 	</div>
 
 	<div class="body-content">
-		<div class="container"">
-			<div class='row pt-5 pl-4 mt-5 justify-content-start'>
-				<div class='col-12 pb-5 justify-content-start'>
+		<div class="container">
+			<div class='row pt-5 pl-4 mt-5 justify-content-center'>
+				<div class='col-12 pb-5'>
 
 					<form class="form-signin" method="post" action="customer_register.php" enctype="multipart/form-data">
 						<h1>Create Your Account.</h1>
@@ -96,6 +96,7 @@ include("includes/db.php");
 							<input class="form-control" type="text" name="c_name" placeholder="name" id="registerName" required>
 							<label for="registerName">name</label>
 						</div>
+						<hr />
 						<div class="form-group form-label-group" style="width:350px;">
 							<input class="form-control" type="text" name="c_email" placeholder="email" id="registerEmail" required>
 							<label for="registerEmail">email</label>
@@ -104,9 +105,14 @@ include("includes/db.php");
 							<input class="form-control" type="password" name="c_pass" placeholder="password" id="registerPassword" required>
 							<label for="registerPassword">password</label>
 						</div>
-						<div class="form-group custom-file" style="width:350px">
-							<input class="custom-file-input" type="file" name="c_pass" id="customerImage" required>
-							<label class="custom-file-label" for="registerImage">image</label>
+						<hr />
+						<div class="form-group form-label-group" style="width:350px;">
+							<input class="form-control" type="text" name="c_address" placeholder="address" id="registerAddress" required>
+							<label for="registerAddress">address</label>
+						</div>
+						<div class="form-group form-label-group" style="width:350px;">
+							<input class="form-control" type="text" name="c_city" placeholder="city" id="registerCity" required>
+							<label for="registerCity">city</label>
 						</div>
 						<div class="form-group form-label-group" style="width:350px">
 							<select class="custom-select" name="c_country" id="registerCountry" required>
@@ -123,23 +129,57 @@ include("includes/db.php");
 							</select>
 							<!-- <label for="registerCountry">country</label> -->
 						</div>
-						<div class="form-group form-label-group" style="width:350px;">
-							<input class="form-control" type="text" name="c_city" placeholder="city" id="registerCity" required>
-							<label for="registerCity">city</label>
-						</div>
+						<hr />
 						<div class="form-group form-label-group" style="width:350px;">
 							<input class="form-control" type="text" name="c_contact" placeholder="contact" id="registerContact" required>
 							<label for="registerContact">contact</label>
 						</div>
-						<div class="form-group form-label-group" style="width:350px;">
-							<input class="form-control" type="text" name="c_address" placeholder="address" id="registerAddress" required>
-							<label for="registerAddress">address</label>
+						<hr />
+						<div class="form-group custom-file mb-3 py-1" style="width:350px">
+							<input class="custom-file-input" type="file" name="c_pass" id="customerImage" required>
+							<label class="custom-file-label" for="registerImage">image</label>
 						</div>
 						<div class="form-group" style="width:350px;">
 							<br />
 							<button class="btn btn-outline-primary" type="submit" name="register" name="">Register</button>
 						</div>
 					</form>
+
+					<?php
+					if (isset($_POST['register'])) {
+
+						$ip = getIp();
+
+						$c_name = $_POST['c_name'];
+						$c_email = $_POST['c_email'];
+						$c_pass = $_POST['c_pass'];
+						$c_image = $_FILES['c_image']['name'];
+						$c_image_tmp = $_FILES['c_image']['tmp_name'];
+						$c_country = $_POST['c_country'];
+						$c_city = $_POST['c_city'];
+						$c_contact = $_POST['c_contact'];
+						$c_address = $_POST['c_address'];
+
+						move_uploaded_file($c_image_tmp, "customer/customer_images/$c_image");
+
+						$insert_c = "insert into customers (customer_ip,customer_name,customer_email,customer_pass,customer_country,customer_city,customer_contact,customer_address,customer_image) values ('$ip','$c_name','$c_email','$c_pass','$c_country','$c_city','$c_contact','$c_address','$c_image')";
+
+						$run_c = mysqli_query($con, $insert_c);
+						$sel_cart = "select * from cart where ip_add='$ip'";
+						$run_cart = mysqli_query($con, $sel_cart);
+						$check_cart = mysqli_num_rows($run_cart);
+
+						if ($check_cart == 0) {
+							$_SESSION['customer_email'] = $c_email;
+							echo "<script>alert('Account has been created successfully, Thanks!')</script>";
+							echo "<script>window.open('customer/my_account.php','_self')</script>";
+						} else {
+							$_SESSION['customer_email'] = $c_email;
+							echo "<script>alert('Account has been created successfully, Thanks!')</script>";
+							echo "<script>window.open('checkout.php','_self')</script>";
+						}
+					}
+					?>
 
 				</div>
 			</div>
@@ -246,39 +286,3 @@ include("includes/db.php");
 </body>
 
 </html>
-
-<?php
-if (isset($_POST['register'])) {
-
-	$ip = getIp();
-
-	$c_name = $_POST['c_name'];
-	$c_email = $_POST['c_email'];
-	$c_pass = $_POST['c_pass'];
-	$c_image = $_FILES['c_image']['name'];
-	$c_image_tmp = $_FILES['c_image']['tmp_name'];
-	$c_country = $_POST['c_country'];
-	$c_city = $_POST['c_city'];
-	$c_contact = $_POST['c_contact'];
-	$c_address = $_POST['c_address'];
-
-	move_uploaded_file($c_image_tmp, "customer/customer_images/$c_image");
-
-	$insert_c = "insert into customers (customer_ip,customer_name,customer_email,customer_pass,customer_country,customer_city,customer_contact,customer_address,customer_image) values ('$ip','$c_name','$c_email','$c_pass','$c_country','$c_city','$c_contact','$c_address','$c_image')";
-
-	$run_c = mysqli_query($con, $insert_c);
-	$sel_cart = "select * from cart where ip_add='$ip'";
-	$run_cart = mysqli_query($con, $sel_cart);
-	$check_cart = mysqli_num_rows($run_cart);
-
-	if ($check_cart == 0) {
-		$_SESSION['customer_email'] = $c_email;
-		echo "<script>alert('Account has been created successfully, Thanks!')</script>";
-		echo "<script>window.open('customer/my_account.php','_self')</script>";
-	} else {
-		$_SESSION['customer_email'] = $c_email;
-		echo "<script>alert('Account has been created successfully, Thanks!')</script>";
-		echo "<script>window.open('checkout.php','_self')</script>";
-	}
-}
-?>
