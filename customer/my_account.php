@@ -154,7 +154,14 @@ while ($p_price = mysqli_fetch_array($run_price)) {
 
 					while ($p_price = mysqli_fetch_array($run_price)) {
 						$pro_id = $p_price['p_id'];
-						$pro_price = "select *, brand_title from products left join brands on products.product_brand = brands.brand_id where product_id='$pro_id'";
+
+						$pro_price = "
+						select *, brand_title
+						from products
+							left join brands
+								on products.product_brand = brands.brand_id
+						where product_id='$pro_id'";
+
 						$run_pro_price = mysqli_query($con, $pro_price);
 
 						while ($pp_price = mysqli_fetch_array($run_pro_price)) {
@@ -170,16 +177,16 @@ while ($p_price = mysqli_fetch_array($run_price)) {
 								<div class='col-md-4 pb-5 bg-light'>
 									<div class='card-mb-4 '>
 										<div width='100%' height='225'>
-											<a href='details.php?pro_id=$pro_id'>
+											<a href='../details.php?pro_id=$pro_id'>
 												<img class='bd-placeholder-img card-img-top' src='../admin_area/product_images/$product_image' alt='' width='100%' height='100%'>
 											</a>
 										</div>
 										<div class='card-body pt-5 pb-0 px-0'>
 											<div class='d-flex justify-content-between align-items-center'>
-												<a href='details.php?pro_id=$pro_id' class='product-link'>
+												<a href='../details.php?pro_id=$pro_id' class='product-link'>
 													<small class='card-text text-muted'>$$pro_brand_title $product_title</small>
 												</a>
-												<small class='card-text'>$123</small>
+												<small class='card-text'>$$single_price</small>
 											</div>
 										</div>
 									</div>
@@ -189,6 +196,19 @@ while ($p_price = mysqli_fetch_array($run_price)) {
 					}
 					?>
 
+				</div>
+			</div>
+		</div>
+
+		<div class="w100 bg-light px-5 pb-4">
+			<div class="container">
+				<div class="row px-5 pt-5">
+					<div class="col-6-md bg-white">
+						<h4 class="text-left">Your Orders</h4>
+					</div>
+					<div class="col-6-md bg-white">
+						
+					</div>
 				</div>
 			</div>
 		</div>
