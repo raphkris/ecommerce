@@ -3,18 +3,6 @@ session_start();
 include("functions/functions.php");
 ?>
 
-<?php
-	// $_SESSION['customer_email'] = $_POST['customer_email'];
-	if (isset($_SESSION['customer_email'])) {
-		$user = $_SESSION['customer_email'];
-	}
-	$get_img = "select * from customers where customer_email='$user'";
-	$run_img = mysqli_query($con, $get_img);
-	$row_img = mysqli_fetch_array($run_img);
-	$c_image = $row_img['customer_image'];
-	$c_name = $row_img['customer_name'];
-?>
-
 <!DOCTYPE HTML>
 <html lang="en">
 
@@ -96,6 +84,18 @@ include("functions/functions.php");
 
 	<div class="body-content">
 
+		<?php
+		// $_SESSION['customer_email'] = $_POST['customer_email'];
+		if (isset($_SESSION['customer_email'])) {
+			$user = $_SESSION['customer_email'];
+			$get_img = "select * from customers where customer_email='$user'";
+			$run_img = mysqli_query($con, $get_img);
+			$row_img = mysqli_fetch_array($run_img);
+			$c_image = $row_img['customer_image'];
+			$c_name = $row_img['customer_name'];
+		}
+		?>
+
 		<div class="w100 bg-light px-5 pb-4">
 			<div class='container'>
 				<div class="row px-5 pt-4">
@@ -109,7 +109,32 @@ include("functions/functions.php");
 				<hr />
 				<div class="row px-5">
 					<div class="col-12">
-						<h1 class="text-left pt-4">Hi, <?php echo $c_name ?>.</h1>
+
+
+
+						<?php
+						// $_SESSION['customer_email'] = $_POST['customer_email'];
+						if (isset($_SESSION['customer_email'])) {
+							$user = $_SESSION['customer_email'];
+							$get_img = "select * from customers where customer_email='$user'";
+							$run_img = mysqli_query($con, $get_img);
+							$row_img = mysqli_fetch_array($run_img);
+							$c_image = $row_img['customer_image'];
+							$c_name = $row_img['customer_name'];
+						
+						?>
+
+
+
+						<h1 class="text-left pt-4">Hi, <?php echo $c_name; ?>.</h1>
+						<!-- <h1 class="text-left pt-4">Hi, <?php echo $row_img['customer_name']; ?>.</h1> -->
+
+
+
+						<?php } ?>
+
+
+
 					</div>
 				</div>
 			</div>
@@ -186,7 +211,7 @@ include("functions/functions.php");
 						<h4 class="text-left">Your Orders</h4>
 					</div>
 					<div class="col-6-md bg-white">
-						
+
 					</div>
 				</div>
 			</div>
