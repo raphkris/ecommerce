@@ -141,7 +141,7 @@ include("functions/functions.php");
 							} else { // if login details correct, cart not empty, go to checkout
 								$_SESSION['customer_email'] = $c_email;
 								echo "<script>alert('You logged in successfully, Thanks!')</script>";
-								echo "<script>window.open('checkout.php','_self')</script>";
+								echo "<script>window.open('customer/my_account.php','_self')</script>";
 							}
 						}
 					?>

@@ -4,36 +4,15 @@ include("functions/functions.php");
 ?>
 
 <?php
-$user = $_SESSION['customer_email'];
-$get_img = "select * from customers where customer_email='$user'";
-$run_img = mysqli_query($con, $get_img);
-$row_img = mysqli_fetch_array($run_img);
-$c_image = $row_img['customer_image'];
-$c_name = $row_img['customer_name'];
-// echo "<p style='text-align:center;'><img src='customer_images/$c_image' width='150' height='150'/></p>";
-?>
-
-<?php
-$total = 0;
-global $con;
-$ip = getIp();
-$sel_price = "select * from cart where ip_add='$ip'";
-$run_price = mysqli_query($con, $sel_price);
-
-while ($p_price = mysqli_fetch_array($run_price)) {
-	$pro_id = $p_price['p_id'];
-	$pro_price = "select *, brand_title from products left join brands on products.product_brand = brands.brand_id where product_id='$pro_id'";
-	$run_pro_price = mysqli_query($con, $pro_price);
-
-	while ($pp_price = mysqli_fetch_array($run_pro_price)) {
-		$product_price = array($pp_price['product_price']);
-		$product_title = $pp_price['product_title'];
-		$product_image = $pp_price['product_image'];
-		$single_price = $pp_price['product_price'];
-		$values = array_sum($product_price);
-		$total += $values;
+	// $_SESSION['customer_email'] = $_POST['customer_email'];
+	if (isset($_SESSION['customer_email'])) {
+		$user = $_SESSION['customer_email'];
 	}
-}
+	$get_img = "select * from customers where customer_email='$user'";
+	$run_img = mysqli_query($con, $get_img);
+	$row_img = mysqli_fetch_array($run_img);
+	$c_image = $row_img['customer_image'];
+	$c_name = $row_img['customer_name'];
 ?>
 
 <!DOCTYPE HTML>
@@ -85,8 +64,8 @@ while ($p_price = mysqli_fetch_array($run_price)) {
 						echo "<a class='dropdown-item' href='customer/my_account.php'>Account</a>";
 						echo "<a class='dropdown-item' href='logout.php'>Log out</a>";
 					} else {
-						echo "<a class='dropdown-item' href='customer/my_account.php'>Account</a>";
-						echo "<a class='dropdown-item' href='#'>Log in</a>";
+						echo "<a class='dropdown-item' href='../customer_login.php'>Account</a>";
+						echo "<a class='dropdown-item' href='../customer_login.php'>Log in</a>";
 					}
 					?>
 				</div>
@@ -184,7 +163,7 @@ while ($p_price = mysqli_fetch_array($run_price)) {
 										<div class='card-body pt-5 pb-0 px-0'>
 											<div class='d-flex justify-content-between align-items-center'>
 												<a href='../details.php?pro_id=$pro_id' class='product-link'>
-													<small class='card-text text-muted'>$$pro_brand_title $product_title</small>
+													<small class='card-text text-muted'>$pro_brand_title $product_title</small>
 												</a>
 												<small class='card-text'>$$single_price</small>
 											</div>
@@ -203,7 +182,7 @@ while ($p_price = mysqli_fetch_array($run_price)) {
 		<div class="w100 bg-light px-5 pb-4">
 			<div class="container">
 				<div class="row px-5 pt-5">
-					<div class="col-6-md bg-white">
+					<div class="col-6-md bg-light">
 						<h4 class="text-left">Your Orders</h4>
 					</div>
 					<div class="col-6-md bg-white">
